@@ -1,9 +1,9 @@
 // Option 1
-// function isPalindrome(str) {
-//   const reversedStr = str.toLowerCase().split("").reverse().join("");
+function isPalindrome(str) {
+  const reversedStr = str.toLowerCase().split("").reverse().join("");
 
-//   return reversedStr === str;
-// }
+  return reversedStr === str;
+}
 
 // Option 2: recursively
 function isPalindrome(str) {
@@ -19,5 +19,5 @@ function isPalindrome(str) {
 console.log(isPalindrome("awesome")); // false
 console.log(isPalindrome("foobar")); // false
 console.log(isPalindrome("tacocat")); // true
-// isPalindrome('amanaplanacanalpanama') // true
-// isPalindrome('amanaplanacanalpandemonium') // false
+console.log(isPalindrome("amanaplanacanalpanama")); // true
+console.log(isPalindrome("amanaplanacanalpandemonium")); // false
