@@ -36,16 +36,16 @@ function bubbleSort(arr) {
     ([arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]);
 
   for (let i = arr.length; i > 0; i--) {
-    let shouldNotSwat;
+    let shouldNotSwap;
 
     for (let j = 0; j < i - 1; j++) {
-      shouldNotSwat = true;
+      shouldNotSwap = true;
       if (arr[j] > arr[j + 1]) {
         swap(arr, j, j + 1);
-        shouldNotSwat = false;
+        shouldNotSwap = false;
       }
     }
-    if (shouldNotSwat) break;
+    if (shouldNotSwap) break;
   }
 
   return arr;
