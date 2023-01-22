@@ -3,7 +3,7 @@
 // and when we reach the end we place the smallest value at the begining
 // of the array.
 // Time Complexity: O(n^2)
-import swap from "./swap";
+import swap from "./swap.js";
 
 function selectionSort(arr) {
   let lowest;
@@ -24,3 +24,5 @@ function selectionSort(arr) {
 
   return arr;
 }
+
+console.log(selectionSort([2, 1, 9, 76, 4]));
