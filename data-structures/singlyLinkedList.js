@@ -1,9 +1,9 @@
 /*
- * Linked List
+ * Sinlgy Linked List
  * -- Definition
  * A data structure that contains a head, tail and length.
  * Each element is a node. Each node has a value and a single
- * pointer which gives access to another node.
+ * pointer which gives access to the next node in the list.
  *
  * -- Characteristics
  * No indexes
