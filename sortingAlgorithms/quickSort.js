@@ -1,5 +1,7 @@
 // Quick sort
 // We use a pivot and move smaller values to its left.
+// Time Complexity: O(n^2))
+// Space Complexity: O(log(n))
 import { pivot } from "./sortingAlgorithms.helpers.js";
 
 function quickSort(arr, left = 0, right = arr.length - 1) {

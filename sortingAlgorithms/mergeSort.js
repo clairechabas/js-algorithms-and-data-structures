@@ -5,6 +5,7 @@
 // We split the array into smaller arrays until we reach to arrays of 0 or 1
 // in length and then we merge the arrays back together.
 // Time Complexity: O(n log(n))
+// Space Complexity: O(n)
 import { merge } from "./sortingAlgorithms.helpers.js";
 
 function mergeSort(arr) {
