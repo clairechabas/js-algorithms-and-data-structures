@@ -3,6 +3,8 @@
 // and insert it at the right spot. So we're sorting the array
 // as we move forward in the array by inserting each item in
 // the already sorted part of the array.
+// Insertion sort is better than bubble and selection when you
+// receive data in real time and need to sort them on the go.
 // Time Complexity: O(n^2)
 function insertionSort(arr) {
   let currentValue;
