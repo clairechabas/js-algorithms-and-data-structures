@@ -39,7 +39,7 @@ export function merge(arr1, arr2) {
 
   return result;
 }
-// Examples:
+// Examples
 // console.log("merge", merge([100, 200], [1, 2, 3, 5, 6]));
 // console.log("merge", merge([1, 8, 12], [3, 14, 78, 99]));
 
@@ -62,5 +62,44 @@ export function pivot(arr, start = 0, end = arr.length + 1) {
 
   return swapIndex;
 }
-// Examples:
-console.log(pivot([4, 8, 2, 1, 5, 7, 6, 3]));
+// Examples
+// console.log(pivot([4, 8, 2, 1, 5, 7, 6, 3]));
+
+/* GET DIGIT */
+// Given a number and a "position", we return the number's digit
+// located at this given position.
+// This helper is needed for Radix sort.
+export function getDigit(number, position) {
+  return Math.floor(Math.abs(number) / Math.pow(10, position)) % 10;
+}
+
+// Examples
+// console.log(getDigit(12345, 0)); // 5
+// console.log(getDigit(12345, 1)); // 4
+// console.log(getDigit(12345, 4)); // 1
+
+/* DIGITS COUNT */
+// Returns the number of digits in a given number.
+// This helper is needed for Radix sort.
+export function digitsCount(number) {
+  if (number === 0) return 1;
+
+  return Math.floor(Math.log10(Math.abs(number))) + 1;
+}
+
+/* MOST DIGITS */
+// Returns the number of digits of the number with
+// the most digits in an array of numbers.
+// This helper is needed for Radix sort.
+export function mostDigits(numbersArr) {
+  let maxDigits = 0;
+
+  for (let i = 0; i < numbersArr.length; i++) {
+    maxDigits = Math.max(maxDigits, digitsCount(numbersArr[i]));
+  }
+
+  return maxDigits;
+}
+
+// Examples
+// console.log(mostDigits([1234, 56, 7])); // 4
