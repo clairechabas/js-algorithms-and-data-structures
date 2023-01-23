@@ -1,5 +1,5 @@
 /*
- * Queue
+ * Queues
  * -- Definition
  * Stacks are an abstract data structure. It's a collection
  * of data implementing the FIFO rule: first in first out.
