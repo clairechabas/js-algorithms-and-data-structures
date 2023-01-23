@@ -155,6 +155,7 @@ class BinarySearchTree {
     return data;
   }
 
+  // Gives you an array with values "in order" (ascending)
   DFSInOrder() {
     let data = [];
 
