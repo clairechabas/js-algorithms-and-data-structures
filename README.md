@@ -16,3 +16,13 @@ The best time complexity you can hope for when comparing values is O(n * log(n))
 
 Radix sort is a special sorting algorithm which works with lists of numbers and doesn't compare elements, it relies on the number of digits instead.
 Time Complexity: O(nk) | Space Complexity: O(n+k)
+
+## Data Structures
+- Singly Linked Lists
+- Doubly Linked Lists
+- Stacks
+- Queues
+- Trees
+- Heaps
+- Hash Tables
+- Graphs & Graph Traversal
