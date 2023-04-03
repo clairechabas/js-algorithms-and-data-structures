@@ -1,6 +1,6 @@
-# 🧮 JavaScript Algorithms & Data Structures Exercices
+# 🧮 JavaScript Algorithms & Data Structures Exercises
 
-Preparing for coding interviews.
+My personal practice space around algorithms and data structures.
 
 ## Sorting Algorithms
 For unsorted arrays we use algorithms to sort using different approaches.
