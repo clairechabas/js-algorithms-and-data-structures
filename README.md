@@ -2,6 +2,11 @@
 
 My personal practice space around algorithms and data structures.
 
+## Algorithms
+**Note on performance in JavaScript: Loops are usually 3+ times faster than their declarative counterparts.**
+Imperative programming with loops results in better performance than using convenient Array methods. Invoking callback function is not free and adds up for big arrays. Declarative programming style is very expressive, easier to write, and far more readable. It’s better 99% of the time, but not when performance matters. Loops are usually 3+ times faster than their declarative counterparts.
+For more details: [read the full study here](https://leanylabs.com/blog/js-forEach-map-reduce-vs-for-for_of/).
+
 ## Sorting Algorithms
 For unsorted arrays we use algorithms to sort using different approaches.
 
