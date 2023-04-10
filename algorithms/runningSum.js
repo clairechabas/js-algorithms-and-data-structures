@@ -46,7 +46,20 @@ var runningSum = function (nums) {
   return result;
 };
 
+/**
+ * Solution 5 - 55ms - Beats 87.71%
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var runningSum5 = function (nums) {
+  let result = [nums[0]];
+  for (let i = 1; i < nums.length; i++) {
+    result.push(nums[i] + result[i - 1]);
+  }
+  return result;
+};
+
 // Examples
-console.log(runningSum([1, 2, 3, 4])); // [1,3,6,10]
-console.log(runningSum([1, 1, 1, 1, 1])); // [1,2,3,4,5]
-console.log(runningSum([3, 1, 2, 10, 1])); // [3,4,6,16,17]
+console.log(runningSum5([1, 2, 3, 4])); // [1,3,6,10]
+console.log(runningSum5([1, 1, 1, 1, 1])); // [1,2,3,4,5]
+console.log(runningSum5([3, 1, 2, 10, 1])); // [3,4,6,16,17]
