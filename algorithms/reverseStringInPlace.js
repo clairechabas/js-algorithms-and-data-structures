@@ -36,6 +36,24 @@ function reverseStringNative(s) {
   return s.reverse();
 }
 
+// Solution 4 - 93ms - Beats 58.05%
+function reverseArr(array) {
+  let left = 0;
+  let right = array.length - 1;
+  let temp;
+
+  while (left < right) {
+    temp = array[right];
+    array[right] = array[left];
+    array[left] = temp;
+
+    left++;
+    right--;
+  }
+
+  return array;
+}
+
 // Examples
-console.log(reverseStringRecursive(["h", "e", "l", "l", "o"])); // ["o","l","l","e","h"]
-console.log(reverseStringRecursive(["H", "a", "n", "n", "a", "h"])); // ["h","a","n","n","a","H"]
+console.log(reverseArr(["h", "e", "l", "l", "o"])); // ["o","l","l","e","h"]
+console.log(reverseArr(["H", "a", "n", "n", "a", "h"])); // ["h","a","n","n","a","H"]
