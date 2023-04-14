@@ -1,9 +1,12 @@
 /**
  * Ransom Note
+ *
  * Given two strings ransomNote and magazine, return true if
  * ransomNote can be constructed by using the letters from
  * magazine and false otherwise.
+ *
  * Each letter in magazine can only be used once in ransomNote.
+ *
  * @param {string} ransomNote
  * @param {string} magazine
  * @return {boolean}
@@ -51,10 +54,31 @@ var canConstruct2 = function (ransomNote, magazine) {
   return array.every((val) => val <= 0);
 };
 
+// Solution 3 - 80ms - Beats 81.1%
+var canConstruct3 = function (ransomNote, magazine) {
+  // 0. return early
+  if (ransomNote.length > magazine.length) return false;
+
+  // 1. store ransomNote letters frequencies in a hash map
+  let magazineMap = new Map();
+  for (const letter of magazine) {
+    magazineMap.set(letter, (magazineMap.get(letter) || 0) + 1);
+  }
+
+  // 2. loop over magazine and drecrement each matching letter
+  for (const letter of ransomNote) {
+    if (!magazineMap.get(letter)) return false;
+
+    magazineMap.set(letter, magazineMap.get(letter) - 1);
+  }
+
+  return true;
+};
+
 // Examples
-console.log(canConstruct2("a", "b")); // false
-console.log(canConstruct2("aa", "ab")); // false
-console.log(canConstruct2("aa", "aab")); // true
+console.log(canConstruct3("a", "b")); // false
+console.log(canConstruct3("aa", "ab")); // false
+console.log(canConstruct3("aa", "aab")); // true
 console.log(
-  canConstruct2("bg", "efjbdfbdgfjhhaiigfhbaejahgfbbgbjagbddfgdiaigdadhcfcj")
+  canConstruct3("bg", "efjbdfbdgfjhhaiigfhbaejahgfbbgbjagbddfgdiaigdadhcfcj")
 ); // true
