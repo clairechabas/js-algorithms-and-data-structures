@@ -37,6 +37,7 @@ function linkedList(head) {
  * that can be reached again by continuously following the next pointer.
  */
 // Option 1: Solution with slow and fast pointers
+// Space complexity: O(1) / Time complextiy: O(n)
 const hasCycleWithPointers = (head) => {
   let slow = head;
   let fast = head;
@@ -51,6 +52,7 @@ const hasCycleWithPointers = (head) => {
 };
 
 // Option 2: Solution with hashing
+// Space complexity: O(n) / Time complextiy: O(n)
 const hasCycleWithHashing = (head) => {
   let set = new Set();
 
