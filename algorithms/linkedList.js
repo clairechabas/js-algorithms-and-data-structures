@@ -36,7 +36,8 @@ function linkedList(head) {
  * There is a cycle in a linked list if there is some node in the list
  * that can be reached again by continuously following the next pointer.
  */
-const hasCycle = (head) => {
+// Option 1: Solution with slow and fast pointers
+const hasCycleWithPointers = (head) => {
   let slow = head;
   let fast = head;
   while (fast && fast.next) {
@@ -44,6 +45,20 @@ const hasCycle = (head) => {
     fast = fast.next.next;
 
     if ((fast = slow)) return true;
+  }
+
+  return false;
+};
+
+// Option 2: Solution with hashing
+const hasCycleWithHashing = (head) => {
+  let set = new Set();
+
+  while (head) {
+    if (set.has(head)) return true;
+
+    set.add(head);
+    head = head.next;
   }
 
   return false;
