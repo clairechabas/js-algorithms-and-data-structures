@@ -1,5 +1,5 @@
 /**
- * linkedList
+ * Singly Linked Lists
  *
  */
 class ListNode {
@@ -10,7 +10,7 @@ class ListNode {
 }
 
 /**
- * Example 1
+ * Ex 1
  *
  * Given the head of a linked list with an odd number of nodes head,
  * return the value of the node in the middle.
@@ -29,7 +29,7 @@ function linkedList(head) {
 }
 
 /**
- * Example 2
+ * Ex 2
  *
  * Given the head of a linked list, determine if the linked list has a cycle.
  *
@@ -67,7 +67,7 @@ const hasCycleWithHashing = (head) => {
 };
 
 /**
- * Example 3
+ * Ex 3
  *
  * Given the head of a linked list and an integer K, return the Kth
  * node from the end.
@@ -93,7 +93,7 @@ let findNode = (head, k) => {
 };
 
 /**
- * Example 4: Middle of the Linked List
+ * Ex 4: Middle of the Linked List
  *
  * Given the head of a singly linked list, return the middle node
  * of the linked list.
@@ -115,7 +115,7 @@ const middleNode = function (head) {
 };
 
 /**
- * Example 5: Remove Duplicates from Sorted List
+ * Ex 5: Remove Duplicates from Sorted List
  *
  * Given the head of a sorted linked list, delete all duplicates such
  * that each element appears only once. Return the linked list sorted as well.
@@ -135,4 +135,48 @@ const deleteDuplicates = function (head) {
   }
 
   return head;
+};
+
+/**
+ * Ex 6: Swap Nodes in Pairs
+ *
+ * Given the head of a linked list, swap every pair of nodes.
+ *
+ * For example, given a linked list 1 -> 2 -> 3 -> 4 -> 5 -> 6,
+ * return a linked list 2 -> 1 -> 4 -> 3 -> 6 -> 5.
+ */
+const swapNodesInPairs = function (head) {
+  // Handle case of list with an odd number of nodes
+  if (!head || !head.next) {
+    return head;
+  }
+
+  // storing the reference to the second node of the list
+  // which in the end become the first node of the list
+  // which we return
+  let newStart = head.next;
+  let prev = null;
+
+  while (head && head.next) {
+    // If this is not the first step
+    if (prev !== null) {
+      prev.next = head.next;
+    }
+
+    prev = head;
+
+    // storing a reference to the rest of the list
+    let nextNode = head.next.next;
+
+    // turn the pointer of the second node back to the first node
+    head.next.next = head;
+
+    // swap the 2 nodes
+    // 1. point the head next node to the rest of the list
+    head.next = nextNode;
+    // 2. move the head to become the nextNode (the first node of rest of the list)
+    head = nextNode;
+  }
+
+  return newStart;
 };
