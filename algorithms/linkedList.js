@@ -187,11 +187,13 @@ const swapNodesInPairs = function (head) {
  * In a linked list of size n, where n is even, the ith node (0-indexed) of the linked
  * list is known as the twin of the (n-1-i)th node, if 0 <= i <= (n / 2) - 1.
  *
- * For example, if n = 4, then node 0 is the twin of node 3, and node 1 is the twin of node 2.
+ * For example, if n = 4, then node 0 is the twin of node 3,
+ * and node 1 is the twin of node 2.
  * These are the only nodes with twins for n = 4
  * The twin sum is defined as the sum of a node and its twin.
  *
- * Given the head of a linked list with even length, return the maximum twin sum of the linked list.
+ * Given the head of a linked list with even length, return the
+ * maximum twin sum of the linked list.
  */
 /**
  * @param {ListNode} head
@@ -221,7 +223,8 @@ var maxTwinSum = function (head) {
   }
   // now prev is located at the middle of the list
 
-  // 3. use fast & slow pointers again, fast starting at n/2, and update the sum at each iteration with the max
+  // 3. use fast & slow pointers again, fast starting at n/2,
+  // and update the sum at each iteration with the max
   let start = head;
   let twin = prev;
   let maxSum = 0;
@@ -234,4 +237,28 @@ var maxTwinSum = function (head) {
   }
 
   return maxSum;
+};
+
+/**
+ * Ex 8: Reverse Linked List
+ *
+ * Given the head of a singly linked list, reverse the list,
+ * and return the reversed list.
+ *
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+// Solution - 55ms - Beats 92.58%
+const reverseList = function (head) {
+  let prev = null;
+  let current = head;
+
+  while (current) {
+    let nextNode = current.next;
+    current.next = prev;
+    prev = current;
+    current = nextNode;
+  }
+
+  return prev;
 };
