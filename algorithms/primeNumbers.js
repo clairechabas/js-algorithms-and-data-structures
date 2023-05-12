@@ -25,3 +25,23 @@ function isPrime(n) {
   // if we couldn't divide n by any number before it, it's prime
   return true;
 }
+
+/**
+ * Prime numbers in range
+ *
+ * Given two integer numbers L and R, count how many prime integers
+ * are in the interval [L, R].
+ *
+ * @param {number} l
+ * @param {number} r
+ * @return {number}
+ */
+function primeCount(l, r) {
+  let count = 0;
+
+  for (let i = l; i <= r; i++) {
+    if (isPrime(i)) count++;
+  }
+
+  return count;
+}
