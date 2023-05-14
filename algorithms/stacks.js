@@ -181,7 +181,62 @@ var simplifyPath = function (path) {
 };
 
 // Test cases
-console.log(simplifyPath("/home/")); // "/home"
-console.log(simplifyPath("/../")); // "/"
-console.log(simplifyPath("/home//foo/")); // "/home/foo"
-console.log(simplifyPath("/a/./b/../../c/")); // "/c"
+// console.log(simplifyPath("/home/")); // "/home"
+// console.log(simplifyPath("/../")); // "/"
+// console.log(simplifyPath("/home//foo/")); // "/home/foo"
+// console.log(simplifyPath("/a/./b/../../c/")); // "/c"
+
+/**
+ * Make The String Great
+ *
+ * Given a string s of lower and upper case English letters.
+ *
+ * A good string is a string which doesn't have two adjacent characters
+ * s[i] and s[i + 1] where:
+ * - 0 <= i <= s.length - 2
+ * - s[i] is a lower-case letter and s[i + 1] is the same letter but in
+ * upper-case or vice-versa.
+ *
+ * To make the string good, you can choose two adjacent characters that
+ * make the string bad and remove them. You can keep doing this until
+ * the string becomes good.
+ *
+ * Return the string after making it good. The answer is guaranteed to
+ * be unique under the given constraints.
+ *
+ * Notice that an empty string is also good.
+ *
+ * @param {string} s
+ * @return {string}
+ */
+// Solution - 59ms - Beats 87%
+var makeGood = function (s) {
+  let stack = [];
+
+  for (let i = 0; i < s.length; i++) {
+    if (
+      stack.length &&
+      stack[stack.length - 1].toLowerCase() === s[i].toLowerCase()
+    ) {
+      if (
+        (/[A-Z]/.test(stack[stack.length - 1]) && /[a-z]/.test(s[i])) ||
+        (/[a-z]/.test(stack[stack.length - 1]) && /[A-Z]/.test(s[i]))
+      ) {
+        // remove both letters
+        stack.pop();
+      } else {
+        stack.push(s[i]);
+      }
+    } else {
+      stack.push(s[i]);
+    }
+  }
+
+  return stack.join("");
+};
+
+// Test cases
+console.log(makeGood("leEeetcode")); // "leetcode"
+console.log(makeGood("abBAcC")); // ""
+console.log(makeGood("s")); // "s"
+console.log(makeGood("")); // ""
