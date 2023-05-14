@@ -262,3 +262,57 @@ const reverseList = function (head) {
 
   return prev;
 };
+
+/**
+ * Ex 9: Reverse Linked List II
+ *
+ * Given the head of a singly linked list and two integers left and right
+ * where left <= right, reverse the nodes of the list from position left
+ * to position right, and return the reversed list.
+ *
+ * Example: head = [1,2,3,4,5], left = 2, right = 4
+ *
+ * @param {ListNode} head
+ * @param {number} left
+ * @param {number} right
+ * @return {ListNode}
+ */
+const reverseBetween = function (head, left, right) {
+  // 1. handle edge case of 0 or 1 element list
+  if (!head || left === right) {
+    return head;
+  }
+
+  // 2. keep a reference to head
+  let newHead = new ListNode(-1);
+  newHead.next = head;
+  let before = newHead;
+
+  // 3. iterate over until first element before the start of the sublist
+  for (let i = 1; i < left; i++) {
+    before = before.next;
+  }
+
+  // and keep reference to the first element of sublist
+  let leftNode = before.next;
+
+  // 4. reverse sublist
+  // 4.1 `current` is our left (start of the sublist)
+  let current = before.next;
+  let prev = before;
+
+  for (let i = left; i <= right; i++) {
+    let nextNode = current.next;
+    current.next = prev;
+    prev = current;
+    current = nextNode;
+  }
+
+  // 5. adjust remaining pointers
+  // 5.1 point first element of sublist to next element after right
+  leftNode.next = current;
+  // 5.2 point before's next pointer to the last element of the sublist (right)
+  before.next = prev;
+
+  return newHead.next;
+};
