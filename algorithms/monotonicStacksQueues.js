@@ -21,17 +21,16 @@
 // Solution - 273ms - Beats 76%
 var dailyTemperatures = function (temperatures) {
   let stack = [];
-  let answer = Array(temperatures.length).fill(0);
+  answer = new Array(temperatures.length).fill(0);
 
   for (let i = 0; i < temperatures.length; i++) {
     while (
       stack.length &&
-      temperatures[stack[stack.length - 1]] < temperatures[i]
+      temperatures[i] > temperatures[stack[stack.length - 1]]
     ) {
-      let j = stack.pop();
-      answer[j] = i - j;
+      previousDayIndex = stack.pop();
+      answer[previousDayIndex] = i - previousDayIndex;
     }
-
     stack.push(i);
   }
 
@@ -81,5 +80,63 @@ var maxSlidingWindow = function (nums, k) {
   return answer;
 };
 
-console.log(maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3)); // [3,3,5,5,6,7]
-console.log(maxSlidingWindow([1], 1)); // [1]
+// console.log(maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3)); // [3,3,5,5,6,7]
+// console.log(maxSlidingWindow([1], 1)); // [1]
+
+/**
+ * Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
+ *
+ * Given an array of integers nums and an integer limit, return the size
+ * of the longest subarray such that the absolute difference between
+ * any two elements of this subarray is less than or equal to limit.
+ *
+ * @param {number[]} nums
+ * @param {number} limit
+ * @return {number}
+ */
+var longestSubarray = function (nums, limit) {
+  // The increasing queue first element while be the min
+  let increasingQueue = [];
+  // The decreasing queue first element while be the max
+  let decreasingQueue = [];
+  let left = 0;
+  let answer = 0;
+
+  for (let right = 0; right < nums.length; right++) {
+    while (
+      increasingQueue.length &&
+      increasingQueue[increasingQueue.length - 1] > nums[right]
+    ) {
+      increasingQueue.pop();
+    }
+    while (
+      decreasingQueue.length &&
+      decreasingQueue[decreasingQueue.length - 1] < nums[right]
+    ) {
+      decreasingQueue.pop();
+    }
+
+    increasingQueue.push(nums[right]);
+    decreasingQueue.push(nums[right]);
+
+    while (decreasingQueue[0] - increasingQueue[0] > limit) {
+      if (nums[left] === increasingQueue[0]) {
+        increasingQueue.shift();
+      }
+      if (nums[left] === decreasingQueue[0]) {
+        decreasingQueue.shift();
+      }
+
+      left++;
+    }
+
+    // We keep the max window size
+    answer = max(answer, right - left + 1);
+  }
+
+  return answer;
+};
+
+console.log(longestSubarray([8, 2, 4, 7], 4)); // 2
+console.log(longestSubarray([10, 1, 2, 4, 7, 2], 5)); // 4
+console.log(longestSubarray([4, 2, 2, 2, 4, 4, 2, 2], 0)); // 3
