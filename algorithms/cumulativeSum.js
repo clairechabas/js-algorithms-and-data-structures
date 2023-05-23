@@ -1,15 +1,13 @@
 /**
  * Create a function takes an array of numbers and returns a number that is the sum of all values in the array.
  */
-// TS: function cumulativeSum(numbers: number[]): number {}
-
 // OPTION 1: with reduce()
-function cumulativeSum(numbers) {
+function cumulativeSumWithReduce(numbers) {
   return numbers.reduce((total, next) => total + next);
 }
 
 // OPTION 2: without JS built-in array methods
-function cumulativeSum2(numbers) {
+export function cumulativeSum(numbers) {
   let total = 0;
 
   for (let i = 0; i < numbers.length; i++) {
@@ -20,5 +18,5 @@ function cumulativeSum2(numbers) {
 }
 
 // Examples
-console.log(cumulativeSum2([1, 2, 3, 4, 5])); // 15
-console.log(cumulativeSum2([1, 1, 1, 1, 1])); // 5
+console.log(cumulativeSum([1, 2, 3, 4, 5])); // 15
+console.log(cumulativeSum([1, 1, 1, 1, 1])); // 5
